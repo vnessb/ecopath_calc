@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecological Footprint Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="eco_calculator.html">Calculator</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="info.html">Info</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <h1>Ecological Footprint Calculator</h1>
+        <form id="footprintForm">
+            <!-- Energy Use -->
+            <div class="question active">
+                <label>How many appliances are plugged in at all times in your home?</label>
+                <select id="appliances">
+                    <option value="">Select...</option>
+                    <option value="500">0-5</option>
+                    <option value="1000">6-15</option>
+                    <option value="1500">16-25</option>
+                    <option value="2000">26+</option>
+                </select>
+                <button type="button" onclick="nextQuestion()">Next</button>
+            </div>
+
+            <!-- Renewable Energy -->
+            <div class="question">
+                <label>Do you use renewable energy sources?</label>
+                <input type="radio" id="renewableYes" name="renewable" value="yes"> Yes
+                <input type="radio" id="renewableNo" name="renewable" value="no"> No
+                <button type="button" onclick="nextQuestion()">Next</button>
+            </div>
+
+            <!-- Transportation -->
+            <div class="question">
+                <label>Choose your primary transportation type:</label>
+                <select id="transport">
+                    <option value="">Select...</option>
+                    <option value="4000">Gas Car</option>
+                    <option value="2000">Hybrid Car</option>
+                    <option value="1000">Electric Car</option>
+                    <option value="500">Public Transport</option>
+                </select>
+                <button type="button" onclick="nextQuestion()">Next</button>
+            </div>
+
+            <!-- Diet -->
+            <div class="question">
+                <label>Choose your primary diet type:</label>
+                <select id="diet">
+                    <option value="">Select...</option>
+                    <option value="3000">Meat-heavy</option>
+                    <option value="2500">Average</option>
+                    <option value="1500">Vegetarian</option>
+                    <option value="1000">Vegan</option>
+                </select>
+                <button type="button" onclick="nextQuestion()">Next</button>
+            </div>
+
+            <!-- Consumption -->
+            <div class="question">
+                <label>Choose your clothing shopping habits:</label>
+                <select id="shopping">
+                    <option value="">Select...</option>
+                    <option value="100">Local shops</option>
+                    <option value="200">Thrift stores</option>
+                    <option value="400">Major stores</option>
+                    <option value="600">Online shopping</option>
+                </select>
+                <button type="button" onclick="nextQuestion()">Next</button>
+            </div>
+
+            <div class="question">
+                <label>How often do you shop for clothes?</label>
+                <select id="shoppingFrequency">
+                    <option value="">Select...</option>
+                    <option value="1">More than three times a month</option>
+                    <option value="1.5">Two to three times a month</option>
+                    <option value="2">Once a month</option>
+                </select>
+                <button type="button" onclick="nextQuestion()">Next</button>
+            </div>
+
+            <!-- Water Usage -->
+            <div class="question">
+                <label>How often do you shower per week?</label>
+                <select id="shower">
+                    <option value="">Select...</option>
+                    <option value="800">Daily or more</option>
+                    <option value="600">4-6 times a week</option>
+                    <option value="400">1-3 times a week</option>
+                </select>
+                <button type="button" onclick="nextQuestion()">Next</button>
+            </div>
+
+            <!-- Water Temp -->
+            <div class="question">
+                <label>Do you mostly use warm water?</label>
+                <input type="radio" id="warmYes" name="waterTemp" value="yes"> Yes
+                <input type="radio" id="warmNo" name="waterTemp" value="no"> No
+                <button type="button" onclick="nextQuestion()">Next</button>
+            </div>
+
+            <div id="result"></div>
+        </form>
+    </div>
+
+    <script>
+        let currentQuestionIndex = 0;
+        const questions = document.querySelectorAll('.question');
+
+        function nextQuestion() {
+            // Store the current question's answer
+            currentQuestionIndex++;
+
+            // If the last question is reached, calculate the result
+            if (currentQuestionIndex >= questions.length) {
+                calculateFootprint();
+                return;
+            }
+
+            // Hide current question and show next
+            questions[currentQuestionIndex - 1].classList.remove('active');
+            questions[currentQuestionIndex].classList.add('active');
+        }
+
+        function calculateFootprint() {
+            let totalFootprint = 0;
+
+            // Energy Use
+            const appliances = document.getElementById('appliances').value;
+            totalFootprint += appliances ? parseInt(appliances) : 0;
+
+            // Renewable Energy
+            const renewable = document.querySelector('input[name="renewable"]:checked');
+            if (renewable) {
+                totalFootprint += renewable.value === "yes" ? -500 : 0; // Reduction if renewable
+            }
+
+            // Transportation
+            const transport = document.getElementById('transport').value;
+            totalFootprint += transport ? parseInt(transport) : 0;
+
+            // Diet
+            const diet = document.getElementById('diet').value;
+            totalFootprint += diet ? parseInt(diet) : 0;
+
+            // Consumption
+            const shopping = document.getElementById('shopping').value;
+            totalFootprint += shopping ? parseInt(shopping) : 0;
+
+            const shoppingFrequency = document.getElementById('shoppingFrequency').value;
+            totalFootprint += shoppingFrequency ? parseFloat(shoppingFrequency) * 100 : 0;
+
+            // Water Usage
+            const shower = document.getElementById('shower').value;
+            totalFootprint += shower ? parseInt(shower) : 0;
+
+            const waterTemp = document.querySelector('input[name="waterTemp"]:checked');
+            if (waterTemp) {
+                totalFootprint += waterTemp.value === "yes" ? 200 : 0;
+            }
+
+            // Show the result
+            const resultDiv = document.getElementById('result');
+            const feedback = assessFootprint(totalFootprint); // Get the feedback
+            resultDiv.innerHTML = `Your ecological footprint is approximately ${totalFootprint} kg CO₂ per year.<br><br>${feedback}`;
+            resultDiv.style.display = "block"; // Show result when calculation is done
+        }
+
+        // Function to assess the ecological footprint and provide feedback
+        function assessFootprint(totalFootprint) {
+            let assessment, feedback;
+
+            if (totalFootprint > 5000) {
+                assessment = "High";
+                feedback = "Your ecological footprint is high, indicating a significant impact on the environment. Here are some suggestions to reduce it:<br>" +
+                    "- Consider reducing car travel or switching to a more sustainable mode of transportation.<br>" +
+                    "- Try to buy second-hand or thrift more often to lower clothing consumption.<br>" +
+                    "- Reduce the number of plugged-in appliances or switch to renewable energy if possible.<br>" +
+                    "- Shorten shower times and try using cold water occasionally to reduce water usage.";
+            } else if (totalFootprint >= 2500 && totalFootprint <= 5000) {
+                assessment = "Average";
+                feedback = "Your ecological footprint is average, meaning you're doing some things well but could still improve. Consider making a few adjustments to lower your impact.";
+            } else {
+                assessment = "Low";
+                feedback = "Great job! Your ecological footprint is low. Keep up the sustainable practices!";
+            }
+
+            return `${assessment} footprint.<br><br>${feedback}`;
+        }
+    </script>
+</body>
+</html>

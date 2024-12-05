@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecological Footprint</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Title of the page -->
+    <h1>Ecological Footprint Calculator</h1>
+
+    <!-- Tab Navigation Menu -->
+    <div class="nav-tabs">
+        <a href="#home" class="active-tab" onclick="openTab(event, 'home')">Home</a>
+        <a href="#calculator" onclick="openTab(event, 'calculator')">Calculator</a>
+        <a href="#resources" onclick="openTab(event, 'resources')">Resources</a>
+        <a href="#info" onclick="openTab(event, 'info')">Info</a>
+    </div>
+
+    <!-- Tab Content -->
+    <div id="home" class="tab-content active">
+        <h2>Welcome to the Ecological Footprint Calculator</h2>
+        <p>This website helps you calculate your carbon footprint and provides resources for reducing it.</p>
+    </div>
+
+    <!-- Move the calculator to the calculator tab -->
+    <div id="calculator" class="tab-content">
+        <h2>Ecological Footprint Calculator</h2>
+        <form id="footprintForm">
+            <!-- Energy Use -->
+            <div class="question active">
+                <label>How many appliances are plugged in at all times in your home?</label>
+                <select id="appliances">
+                    <option value="">Select...</option>
+                    <option value="500">0-5</option>
+                    <option value="1000">6-15</option>
+                    <option value="1500">16-25</option>
+                    <option value="2000">26+</option>
+                </select>
+            </div>
+
+            <!-- Renewable Energy -->
+            <div class="question">
+                <label>Do you use renewable energy sources?</label>
+                <select id="renewable">
+                    <option value="">Select...</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+
+            <!-- Transportation -->
+            <div class="question">
+                <label>Choose your primary transportation type:</label>
+                <select id="transport">
+                    <option value="">Select...</option>
+                    <option value="4000">Gas Car</option>
+                    <option value="2000">Hybrid Car</option>
+                    <option value="1000">Electric Car</option>
+                    <option value="500">Public Transport</option>
+                </select>
+            </div>
+
+            <!-- Diet -->
+            <div class="question">
+                <label>Choose your primary diet type:</label>
+                <select id="diet">
+                    <option value="">Select...</option>
+                    <option value="3000">Meat-heavy</option>
+                    <option value="2500">Average</option>
+                    <option value="1500">Vegetarian</option>
+                    <option value="1000">Vegan</option>
+                </select>
+            </div>
+
+            <!-- Consumption -->
+            <div class="question">
+                <label>Choose your clothing shopping habits:</label>
+                <select id="shopping">
+                    <option value="">Select...</option>
+                    <option value="100">Local shops</option>
+                    <option value="200">Thrift stores</option>
+                    <option value="400">Major stores</option>
+                    <option value="600">Online shopping</option>
+                </select>
+            </div>
+
+            <div class="question">
+                <label>How often do you shop for clothes?</label>
+                <select id="shoppingFrequency">
+                    <option value="">Select...</option>
+                    <option value="1">More than three times a month</option>
+                    <option value="1.5">Two to three times a month</option>
+                    <option value="2">Once a month</option>
+                </select>
+            </div>
+
+            <!-- Water Usage -->
+            <div class="question">
+                <label>How often do you shower per week?</label>
+                <select id="shower">
+                    <option value="">Select...</option>
+                    <option value="800">Daily or more</option>
+                    <option value="600">4-6 times a week</option>
+                    <option value="400">1-3 times a week</option>
+                </select>
+            </div>
+
+            <!-- Water Temp -->
+            <div class="question">
+                <label>Do you mostly use warm water?</label>
+                <select id="waterTemp">
+                    <option value="">Select...</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+         
+            <!-- Submit Button -->
+    <button type="button" onclick="calculateFootprint()">Submit</button>
+</form>
+
+            <div id="result"></div>
+        </form>
+    </div>
+
+    <div id="resources" class="tab-content">
+        <h2>Resources for Reducing Your Ecological Footprint</h2>
+        <p>Here are some tips and resources to help you reduce your environmental impact:</p>
+
+    <!-- Resource Links and Tips -->
+        <h3>Diet</h3>
+        <p>The food system is responsible for more than ⅓ of global greenhouse emissions, with a majority coming from animal-based foods. Industrial agriculture contributes to large land use and deforestation. Consider adopting a plant-based diet, which requires fewer natural resources and is better for individual health.</p>
+        <ul>
+            <li><a href="https://www.nature.com/articles/s41558-024-02084-1">Learn more about the impact of food production and consumption</a></li>
+            <li><a href="https://www.usda.gov/media/blog/2022/01/24/food-waste-and-its-links-greenhouse-gases-and-climate-change">Food waste and its links to greenhouse gases</a></li>
+            <li><a href="https://www.mdpi.com/2072-6643/10/12/1841?source=mdc&tests=%255B%2522coach-benefits%2522%255D">Research on food waste and environmental impacts</a></li>
+        </ul>
+        
+        <h3>Clothing/Consumption</h3>
+        <p>Fast fashion is a major contributor to waste. To reduce environmental impact, consider secondhand shopping or supporting sustainable fashion brands using eco-friendly, plant-based materials.</p>
+        <ul>
+            <li><a href="https://link.springer.com/chapter/10.1007/978-981-13-6358-0_18">Learn more about sustainable fashion</a></li>
+            <li><a href="https://onlinelibrary.wiley.com/doi/full/10.1002/csr.2973">The environmental impact of clothing production</a></li>
+        </ul>
+
+        <h3>Energy Usage</h3>
+        <p>Approximately 40% of the world’s annual energy consumption comes from buildings. To reduce energy consumption, consider switching to renewable energy sources and improving the energy efficiency of your home.</p>
+        <ul>
+            <li><a href="https://pubs.aip.org/aip/jrse/article-abstract/1/5/053101/284457/Energy-use-and-environmental-impacts-A-general">Energy use and environmental impacts</a></li>
+            <li><a href="https://www.eia.gov/energyexplained/use-of-energy/electricity-use-in-homes.php#:~:text=The%20average%20U.S.%20household%20consumes,kWh)%20of%20electricity%20per%20year">Electricity use in homes</a></li>
+        </ul>
+
+        <h3>Transportation</h3>
+        <p>The transportation industry is responsible for 25% of global energy-related CO2 emissions. Consider using alternative transportation methods like public transport, carpooling, or switching to an electric vehicle.</p>
+         <ul>
+            <li><a href="https://www.sciencedirect.com/science/article/pii/S1364032116305123">Learn about transportation emissions</a></li>
+        </ul>
+
+        <h3>Waste Production</h3>
+        <p>Food waste in the U.S. alone produces 170 million metric tons of CO2 emissions. Consider reducing food waste by purchasing only what you need and composting organic waste. Landfills are a significant source of methane emissions, and reducing waste helps decrease this impact.</p>
+        <ul>
+            <li><a href="https://www.nature.com/articles/s41467-021-27624-7">Learn about food waste and emissions</a></li>
+            <li><a href="https://www.epa.gov/sites/default/files/2021-04/documents/us-ghg-inventory-2021-chapter-7-waste.pdf">U.S. Greenhouse Gas Inventory - Waste sector</a></li>
+        </ul>
+    </div>
+
+    <div id="info" class="tab-content">
+        <h2>Environmental Facts and Tips</h2>
+        <p>Here are some important facts and statistics that shed light on environmental impact:</p>
+
+    <!-- Fun Fact Button -->
+        <button id="fun-fact-btn">Show Fun Fact</button>
+
+    <!-- Fun Fact Pop-up -->
+        <div id="fun-fact-popup" class="popup" style="display:none;">
+            <p id="fun-fact-text"></p>
+            <button id="close-popup">Close</button>
+        </div>
+
+        <h3>Food System</h3>
+        <p>The food system is responsible for more than <strong>⅓ of global greenhouse emissions</strong>, with a majority coming from animal-based foods. Industrial agriculture contributes to large land use and deforestation. Consider adopting a plant-based diet, which requires fewer natural resources and is better for individual health.</p>
+
+        <h3>Waste Production</h3>
+        <p>Total generation of municipal solid waste was <strong>292.4 million tons</strong>, or 4.9 pounds per person per day. Reducing, reusing, and recycling can make a significant impact on reducing waste.</p>
+
+        <h3>Clothing Consumption</h3>
+        <p>The average US consumer throws away <strong>81.5 lbs</strong> of clothes every year. Consider secondhand shopping or supporting sustainable fashion brands to help reduce waste.</p>
+
+        <h3>Energy Usage</h3>
+        <p>The average American household uses about <strong>10,500 kilowatt hours</strong> of electricity a year. Switching to energy-efficient appliances and renewable energy sources can significantly reduce your carbon footprint.</p>
+
+        <h3>Transportation</h3>
+        <p>A typical passenger vehicle emits about <strong>4.6 metric tons</strong> of CO2 per year. Using public transport, carpooling, or switching to electric vehicles can help reduce this impact.</p>
+    </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

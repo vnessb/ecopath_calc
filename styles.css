@@ -1,0 +1,233 @@
+/* General body and layout styles */
+body {
+    background-color: #8cd790; /* sage green background */
+    color: #285943;            /* Dark text color */
+    font-family: Arial, sans-serif; /* Clean and modern font */
+    margin: 0;
+    padding: 0;
+}
+
+/* Title styling */
+h1 {
+    color: #000501;            /* black for the title */
+    text-align: center;
+    font-size: 36px;
+    margin-top: 20px;
+}
+
+/* Tab container styles */
+.nav-tabs {
+    display: flex;
+    justify-content: center;
+    background-color: #77af9c;
+    margin-top: 20px;
+    border-radius: 12px; /* Soft rounded edges */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 5px;
+}
+
+/* Tab links (Individual tabs) */
+.nav-tabs a {
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 20px;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 10px; /* Rounded corners */
+    background-color: #285943; /* Initial tab background */
+    margin: 5px;
+    transition: all 0.3s ease-in-out; /* Smooth transition */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow */
+}
+
+/* Hover effect for tabs */
+.nav-tabs a:hover {
+    background-color: #f1f5f1;
+    color: #285943;
+    transform: translateY(-2px); /* Slight lift effect */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Active tab styling (When selected) */
+.nav-tabs .active-tab {
+    background-color: #8cd790;
+    color: #285943;
+    transform: scale(1.1); /* Slightly enlarged to indicate active tab */
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2); /* Stronger shadow for active tab */
+}
+
+/* Styling for form labels */
+label {
+    font-size: 18px;
+    margin: 10px 0;
+    display: block;
+    color: #77af9c;
+}
+
+/* Styling for input fields */
+input[type="number"], 
+input[type="radio"], 
+select {
+    padding: 8px;
+    font-size: 16px;
+    margin: 8px 0;
+    width: 100%;
+    box-sizing: border-box;  /* To include padding in width calculation */
+}
+
+/* Button for calculation */
+button#calculate {
+    background-color: #285943;
+    color: white;
+    font-size: 18px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+button#calculate:hover {
+    background-color: #77af9c;
+    transform: translateY(-2px); /* Lift effect on hover */
+}
+
+/* Form container styling */
+form {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom radio button and checkbox styling */
+input[type="radio"] {
+    margin-right: 8px;
+}
+
+/* Result styling */
+#result {
+    font-size: 18px;
+    color: #285943;
+    margin-top: 20px;
+    display: none; /* Initially hidden */
+    text-align: center;
+    padding: 10px;
+    background-color: #fff4c8;
+    border-radius: 5px;
+}
+/* Tab content visibility */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Active tab styling */
+.active-tab {
+    background-color: #77af9c;
+    color: white;
+}
+/* Styling for resource links */
+.resource-links {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.resource-links li {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.resource-links li a {
+    text-decoration: none;
+    color: #285943;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.resource-links li a:hover {
+    color: #77af9c; /* Light green on hover */
+}
+
+/* Resource section heading styles */
+.resource-section h2 {
+    font-size: 24px;
+    color: #285943;
+    margin-top: 30px;
+    text-decoration: underline;
+}
+
+/* Paragraph styling in resource sections */
+.resource-section p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Adding a slight margin to the bottom of the sections */
+.resource-section {
+    margin-bottom: 40px;
+}
+
+/* Additional resource section link styling */
+.resource-section a {
+    color: #285943;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.resource-section a:hover {
+    color: #77af9c;
+}
+/* Style for the fun fact popup */
+.popup {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    z-index: 1000;
+}
+
+#fun-fact-btn {
+    background-color: #77af9c;
+    color: white;
+    padding: 10px 15px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#fun-fact-btn:hover {
+    background-color: #285943;
+}
+
+#close-popup {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#close-popup:hover {
+    background-color: #cc0000;
+}
