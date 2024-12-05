@@ -1,4 +1,5 @@
 https://vnessb.github.io/ecopath_calc/
+
 Ecological Footprint Calculator The Ecological Footprint Calculator is a web application designed to help users assess their environmental impact. By answering questions about energy use, transportation, diet, consumption habits, and water usage, users can estimate their carbon footprint and find resources to reduce it.
 
 Features Home Tab: Introduction to the calculator and its purpose. Calculator Tab: An interactive form to calculate your ecological footprint based on lifestyle choices. Resources Tab: Tips and resources for reducing your carbon footprint. Info Tab: Global insights about carbon emissions and climate change.
