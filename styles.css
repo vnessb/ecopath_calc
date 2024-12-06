@@ -243,3 +243,12 @@ input[type="radio"] {
     padding: 20px;               /* Add some padding */
     height: 100%;                /* Take up available space within the tab */
 }
+/* Default for all tabs */
+.tab-content {
+    display: none; /* Hidden by default */
+}
+
+/* Active tab */
+.tab-content.active {
+    display: block;
+}
