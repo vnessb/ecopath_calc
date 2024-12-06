@@ -133,7 +133,8 @@ const funFacts = [
     "Switching to a plant-based diet can reduce your carbon footprint by up to 50%.",
     "The transportation sector is responsible for about 25% of global CO2 emissions.",
     "Reducing food waste is one of the most effective ways to combat climate change.",
-    "One tree can absorb about 48 pounds of carbon dioxide per year."
+    "One tree can absorb about 48 pounds of carbon dioxide per year.",
+    "Hi Eduardo!"
 ];
 
 // Show a random fun fact
